@@ -1,0 +1,34 @@
+{# Load navigation_tags at the top of the file: #}
+{% load navigation_tags %}
+
+<footer style="background-color: rgba(214, 214, 214, 0.775);padding:2rem;margin:2rem 0rem;">
+
+    {% with twitter_url=settings.base.NavigationSettings.twitter_url github_url=settings.base.NavigationSettings.github_url facebook_url=settings.base.NavigationSettings.facebook_url linkedin_url=settings.base.NavigationSettings.linkedin_url mastodon_url=settings.base.NavigationSettings.mastodon_url %}
+        {% if twitter_url or github_url or facebook_url or linkedin_url or mastodon_url %}
+            <div class="" >
+                <p style="align-items: justify;text-align:center">
+                    {% if github_url %}
+                        <a style="color: rgb(255, 255, 255);padding:5px;margin:3px;" href="{{ github_url }}">GitHub</a>
+                    {% endif %}
+                    {% if facebook_url %}
+                        <a style="color: rgb(14, 156, 238);padding:5px;margin:3px;"  href="{{ facebook_url }}">Facebook</a>
+                    {% endif %}
+                    {% if linkedin_url %}
+                        <a style="color: rgb(15, 117, 233);padding:5px;margin:3px;"  href="{{ linkedin_url }}">LinkedIn</a>
+                    {% endif %}
+                    {% if twitter_url %}
+                        <a style="color: rgb(0, 0, 0);padding:5px;margin:3px;"  href="{{ twitter_url }}">Twitter</a>
+                    {% endif %}
+                    {% if mastodon_url %}
+                        <a style="color: rgb(241, 14, 226);padding:5px;margin:3px;"  href="{{ mastodon_url }}">Mastodon</a>
+                    {% endif %}
+                </p>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="text-center text-danger">
+        {# Add footer_text: #}
+        {% get_footer_text %}
+    </div>
+</footer>
