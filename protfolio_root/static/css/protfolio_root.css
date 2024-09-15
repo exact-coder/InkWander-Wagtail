@@ -9,15 +9,17 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif, Apple Color Emoji, "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* body {
+body {
   min-height: 100vh;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   padding: 10px;
   display: grid;
   gap: 3vw;
   grid-template-rows: min-content 1fr min-content;
-} */
+  background-color: #0d117b !important;
+  background: #0d117b;
+}
 
 
 footer {
