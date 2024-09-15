@@ -43,12 +43,13 @@
     <body class="{% block body_class %}{% endblock %}">
 
         {% include "includes/header.html" %}
-        <main id="main" class="container">
-        {# Add your header template to your base template: #}
+        <div class="container">
 
-            {% block content %}{% endblock %}
-        </main>
+            <main id="main" class="container">
+                {% block content %}{% endblock %}
+            </main>
 
+        </div>
         {% include "includes/footer.html" %}
 
         {# Global javascript #}

@@ -1,4 +1,4 @@
-{% load wagtailcore_tags navigation_tags wagtailuserbar %}
+{% load wagtailcore_tags navigation_tags wagtailuserbar static %}
 
 
 <header>
@@ -7,16 +7,45 @@
 
 
     {% get_site_root as site_root %}
-    <nav>
-        <p>
-            <a href="{% pageurl site_root %}"> Home </a> | 
-            {% for menuitem in site_root.get_children.live.in_menu %}
-                <a href="{% pageurl menuitem %}">{{ menuitem.title }} </a> {% if not forloop.last %} | {% endif %}
-            {% endfor %}
-            | <a href="/search/">Search</a>
-        </p>
-    </nav>
 
-    {% wagtailuserbar "top-right" %}
+
+    <nav class="navbar  bg-primary border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% pageurl site_root %}"><img src="{% static 'img/logo.jpg' %}" style="height: 35px;width:35px;border-radius:50%;box-shadow: 0 0 0.9rem rgba(255, 255, 255, .5);" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% pageurl site_root %}">Home</a>
+              </li>
+              {% for menuitem in site_root.get_children.live.in_menu %}
+              <li class="nav-item">
+                    <a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }} </a> <!----{% if not forloop.last %} | {% endif %}--->
+                </li>
+              {% endfor %}
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> -->
+            </ul>
+            <form class="d-flex" role="search">
+              <a href="/search/" class="btn btn-outline-success ml-3 bg-light text-info" type="submit">Search</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    {% wagtailuserbar "bottom-right" %}
 
 </header>
+
+
