@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "wagtail.contrib.settings",
+
+    # Third party App
+
 ]
 
 MIDDLEWARE = [
