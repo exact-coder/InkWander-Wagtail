@@ -6,20 +6,26 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-<h1>Search</h1>
-
-<form action="{% url 'search' %}" method="get">
+<section class="search_full text-center">
+<div class="container">
+    <h1 class="text-light mb-3">Search whatever you want!</h1>
+    <form action="{% url 'search' %}" method="get" class="d-flex m-3" role="search">
+        <input name="query"{% if search_query %} value="{{ search_query }}"{% endif %} class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light" value="Search" type="submit">Search</button>
+    </form>
+</div>
+<!-- <form >
     <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-    <input type="submit" value="Search" class="button">
-</form>
+    <input type="submit"  class="button">
+</form> -->
 
 {% if search_results %}
-<p>You searched{% if search_query %} for “{{ search_query }}”{% endif %}, {{ search_results.paginator.count }} result{{ search_results.paginator.count|pluralize }} found.</p>
+<h6 class="text-light m-3">You searched {% if search_query %} for “{{ search_query }}”{% endif %}, {{ search_results.paginator.count }} result{{ search_results.paginator.count|pluralize }} found.</h6>
 
 <ol>
     {% for result in search_results %}
     <li>
-        <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
+        <h4><a class="text-light" href="{% pageurl result %}">{{ result }}</a></h4>
         {% if result.search_description %}
         {{ result.search_description }}
         {% endif %}
@@ -28,7 +34,7 @@
 </ol>
 
 {% if search_results.paginator.num_pages > 1 %}
-    <p>Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}, showing {{ search_results|length }} result{{ search_results|pluralize }} out of {{ search_results.paginator.count }}</p>
+    <p class="text-light m-3">Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}, showing {{ search_results|length }} result{{ search_results|pluralize }} out of {{ search_results.paginator.count }}</p>
 {% endif %}
 
 {% if search_results.has_previous %}
@@ -42,3 +48,4 @@
 No results found
 {% endif %}
 {% endblock %}
+</section>

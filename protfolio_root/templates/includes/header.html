@@ -8,7 +8,7 @@
 
     {% get_site_root as site_root %}
 
-
+    <!-- Navbar Start -->
     <nav class="navbar  bg-primary border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% pageurl site_root %}"><img src="{% static 'img/logo.jpg' %}" style="height: 35px;width:35px;border-radius:50%;box-shadow: 0 0 0.9rem rgba(255, 255, 255, .5);" alt=""></a>
@@ -38,11 +38,14 @@
               </li> -->
             </ul>
             <form class="d-flex" role="search">
-              <a href="/search/" class="btn btn-outline-success ml-3 bg-light text-info" type="submit">Search</a>
+              <a href="/search/" class="btn btn-outline-light ml-3" type="submit">Search</a>
             </form>
           </div>
         </div>
       </nav>
+
+    <!-- Navbar End -->
+
 
     {% wagtailuserbar "bottom-right" %}
 

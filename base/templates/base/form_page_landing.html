@@ -4,6 +4,8 @@
 {% block body_class %}template-formpage{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <div>{{ page.thank_you_text|richtext }}</div>
+<div class="container text-center">
+    <h1 class="text-light m-3">{{ page.title }}</h1>
+    <div class="m-3">{{ page.thank_you_text|richtext }}</div>
+</div>
 {% endblock content %}

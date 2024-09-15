@@ -21,7 +21,7 @@ class CardBlock(StructBlock):
 class FeaturedPostsBlock(StructBlock):
     heading = CharBlock()
     text = RichTextBlock(features=["bold","italic","link"], required=False)
-    # posts = ListBlock(PageChooserBlock(page_type="blog.BlogPage"))
+    posts = ListBlock(PageChooserBlock(page_type="blog.BlogPage"))
 
     class Meta:
         icon = "folder-open-inverse"
@@ -31,3 +31,4 @@ class PortfolioStreamBlock(BaseStreamBlock):
 
     card = CardBlock(group="Sections")
     featured_posts = FeaturedPostsBlock(group="Sections")
+

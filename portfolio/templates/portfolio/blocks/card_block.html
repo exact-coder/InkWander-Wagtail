@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<div class="card">
-    <h3>{{ self.heading }}</h3>
-    <div>{{ self.text|richtext }}</div>
+<div class="container card text-center">
+    <h3 class="text-light m-3">{{ self.heading }}</h3>
+    <div class="m-3">{{ self.text|richtext }}</div>
     {% if self.image %}
         {% image self.image width-480 %}
     {% endif %}
