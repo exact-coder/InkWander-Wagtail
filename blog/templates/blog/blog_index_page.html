@@ -5,7 +5,7 @@
 {% block body_class %}template-blogindexpage{% endblock %}
 
 {% block content %}
-    <h1 class="text-light mt-3 mb-3 p-3">{{ page.title }}</h1>
+    <h1 class="text-danger mt-3 mb-3 p-3">{{ page.title }}</h1>
 
     <div class="intro">{{ page.intro|richtext }}</div>
     
@@ -18,7 +18,7 @@
             {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
         {% endwith %}
 
-        <p class="text-light mt-2">{{ post.intro }}</p>
+        <p class="text-danger mt-2">{{ post.intro }}</p>
         <!-- {{ post.body|richtext }} -->
     {% endwith %}
     {% endfor %}

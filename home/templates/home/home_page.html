@@ -10,16 +10,16 @@
   {% image page.image original as banner_img %}
     <div class="p-5 text-center bg-image rounded-3" style="
     background-image: url({{banner_img.url}});
-    height: 400px;
+    height: 100%; object-fit: cover;
     ">
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);border-radius:10px">
             <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white">
+                <div class="text-danger">
                     <h1 class="mb-3">{{ page.title }}</h1>
                     <h4 class="mb-3">{{ page.hero_text }}</h4>
                     <div class="mb-3">{{ page.body|richtext }}</div>
                     {% if page.hero_cta_link %}
-                        <a data-mdb-ripple-init class="btn btn-outline-light btn-lg mb-3" href="{% pageurl page.hero_cta_link %}" role="button">{% firstof page.hero_cta page.hero_cta_link.title %}</a>
+                        <a data-mdb-ripple-init class="btn btn-outline-danger btn-lg mb-3" href="{% pageurl page.hero_cta_link %}" role="button">{% firstof page.hero_cta page.hero_cta_link.title %}</a>
                     {% endif %}
                 </div>
             </div>

@@ -1,6 +1,6 @@
 {% load wagtailcore_tags %}
 <div class="container">
-    <h2 class="text-light m-2">{{ self.heading }}</h2>
+    <h2 class="text-danger m-2">{{ self.heading }}</h2>
     {% if self.text %}
         <p class="m-2">{{ self.text|richtext }}</p>
     {% endif %}
@@ -9,7 +9,7 @@
         {% for page in self.posts %}
             <div class="card container">
                 <p><a class="m-2" href="{% pageurl page %}">{{ page.title }}</a></p>
-                <p class="text-light m-2">{{ page.specific.date }}</p>
+                <p class="text-danger m-2">{{ page.specific.date }}</p>
             </div>
         {% endfor %}
     </div>

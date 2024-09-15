@@ -17,21 +17,34 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 3vw;
+  /* gap: 3vw; */
   grid-template-rows: min-content 1fr min-content;
-  background-color: #2d599b !important;
-  background: #2d599b;
+  background-color: #e7e7e7 !important;
+  background: #e7e7e7;
 }
 
 
 footer {
-  border-top: 2px;
+  /* border-top: 2px; */
   text-align: center;
 }
 
-header {
-  border-bottom: 2px;
+.footer_icon{
+	align-items: justify;
+	text-align:center;
 }
+.footer_icon a{
+	padding:8px;
+	margin:3px; 
+	background-color:#f20607;
+	border-radius:5px;
+	text-decoration:none;
+	color: #fff;
+}
+
+/* header {
+  border-bottom: 2px;
+} */
 
 .template-homepage main {
   text-align: center;
@@ -105,7 +118,7 @@ h6 {
 p {
 	font-size: 15px;
 	font-family: "Montserrat", sans-serif;
-	color: #3d3d3d;
+	color: #fff;
 	font-weight: 400;
 	line-height: 25px;
 	margin: 0 0 15px 0;
@@ -128,7 +141,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	/* color: #0d117b; */
+	color: #0d117b;
 }
 
 ul,
@@ -155,7 +168,7 @@ ol {
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #0d117b;
+	background-color: #000;
 }
 ::-webkit-scrollbar-thumb:hover{
 	background-color: #e53637;
