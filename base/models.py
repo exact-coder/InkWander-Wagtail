@@ -1,20 +1,17 @@
 from django.db import models
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import (FieldPanel,MultiFieldPanel,FieldRowPanel,InlinePanel,PublishingPanel,)
+from wagtail.admin.panels import FieldPanel,MultiFieldPanel,FieldRowPanel,InlinePanel,PublishingPanel
 # import RichTextField:
 from wagtail.fields import RichTextField
 # import DraftStateMixin, PreviewableMixin, RevisionMixin, TranslatableMixin:
-from wagtail.models import (DraftStateMixin,PreviewableMixin,RevisionMixin,TranslatableMixin,)
+from wagtail.models import DraftStateMixin,PreviewableMixin,RevisionMixin,TranslatableMixin
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
 # import register_snippet:
 from wagtail.snippets.models import register_snippet
 
-from wagtail.contrib.settings.models import (
-    BaseGenericSetting,
-    register_setting,
-)
+from wagtail.contrib.settings.models import BaseGenericSetting,register_setting
 # import RichTextField:
 
 @register_setting
@@ -40,13 +37,7 @@ class NavigationSettings(BaseGenericSetting):
 
 # ...keep the definition of the NavigationSettings model and add the FooterText model:
 @register_snippet
-class FooterText(
-    DraftStateMixin,
-    RevisionMixin,
-    PreviewableMixin,
-    TranslatableMixin,
-    models.Model,
-):
+class FooterText(DraftStateMixin,RevisionMixin,PreviewableMixin,TranslatableMixin,models.Model,):
 
     body = RichTextField()
 
