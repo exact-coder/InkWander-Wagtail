@@ -1,6 +1,7 @@
 {% load wagtailcore_tags %}
 <div class="container">
-    <h2 class="text-danger m-2">{{ self.heading }}</h2>
+    <h2 class="text-danger m-2 text-center">{{ self.heading }}</h2>
+    <hr>
     {% if self.text %}
         <p class="m-2">{{ self.text|richtext }}</p>
     {% endif %}

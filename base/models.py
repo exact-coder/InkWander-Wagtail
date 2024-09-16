@@ -1,21 +1,10 @@
 from django.db import models
 from modelcluster.fields import ParentalKey
-from wagtail.admin.panels import (
-    FieldPanel,
-    MultiFieldPanel,
-    FieldRowPanel,
-    InlinePanel,
-    PublishingPanel,
-)
+from wagtail.admin.panels import (FieldPanel,MultiFieldPanel,FieldRowPanel,InlinePanel,PublishingPanel,)
 # import RichTextField:
 from wagtail.fields import RichTextField
 # import DraftStateMixin, PreviewableMixin, RevisionMixin, TranslatableMixin:
-from wagtail.models import (
-    DraftStateMixin,
-    PreviewableMixin,
-    RevisionMixin,
-    TranslatableMixin,
-)
+from wagtail.models import (DraftStateMixin,PreviewableMixin,RevisionMixin,TranslatableMixin,)
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
 from wagtail.contrib.forms.panels import FormSubmissionsPanel

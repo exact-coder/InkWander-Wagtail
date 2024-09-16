@@ -1,6 +1,9 @@
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
-<figure>
-    {% image self.image fill-600x338 loading="lazy" %}
-    <figcaption>{{ self.caption }} - {{ self.attribution }}</figcaption>
-</figure>
+
+<div class="align-items-center" style="display: block;">
+    <div class="p-2 m-2 bg-secondary text-center" style="border-radius: 10px;display:inline-block;align-items:center;">
+        {% image self.image fill-600x338 as img %}
+        <img style="border-radius: 10px;display:inline-block;" src="{{img.url}}" alt="{{ self.caption }}">
+    </div>
+</div>
