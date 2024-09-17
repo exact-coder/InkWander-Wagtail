@@ -6,15 +6,23 @@
 {% block content %}
 <div class="container">
     <div class="text-center">
-        <h1 class="text-danger">{{ page.title }}</h1>
-        <div class="text-danger">{{ page.intro|richtext }}</div>
-    
-        <form class="page-form" action="{% pageurl page %}" method="POST">
-            {% csrf_token %}
-                {{ form.as_div }}
-
-            <button class="btn btn-outline-danger ml-3" type="submit">Submit</button>
-        </form>
+        <h1 class="text-danger m-3 p-2">{{ page.title }}</h1><hr>
+        <div class="">{{ page.intro|richtext }}</div>
+        
     </div>
+    <form class="page-form" action="{% pageurl page %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-5 col-md-8">
+                <div class="form-data form-control">
+                    {{ form.as_div }}
+                    <button class="btn btn-outline-danger my-3 py-2" style="display: block;width: 100%; font-weight: bold;" type="submit">Submit</button>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-2"></div>
+        </div>
+    </form>
+    
 </div> 
 {% endblock content %}

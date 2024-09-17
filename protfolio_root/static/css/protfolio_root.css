@@ -187,3 +187,30 @@ ol {
 /*----------------------------------------*/
 
 
+/*----------------------------------------*/
+/* Form css Start
+/*----------------------------------------*/
+.form-data input,textarea {
+	color:#e53637;
+	display: block;
+	font-size: 20px;
+	border-radius: 10px;
+	/* align-items: center; */
+	/* width: 100%; */
+}
+.form-data label {
+	font-size: 20px;
+	text-align: left;
+	font-weight: 500;
+}
+.helptext{
+	font-size: 10px;
+	color:#f20607;
+	text-align: left;
+}
+
+/*----------------------------------------*/
+/* Form css End
+/*----------------------------------------*/
+
+
