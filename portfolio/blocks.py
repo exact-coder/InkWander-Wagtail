@@ -1,11 +1,5 @@
 from base.blocks import BaseStreamBlock
-from wagtail.blocks import (
-    CharBlock,
-    ListBlock,
-    PageChooserBlock,
-    RichTextBlock,
-    StructBlock,
-)
+from wagtail.blocks import CharBlock,ListBlock,PageChooserBlock,RichTextBlock,StructBlock
 
 from wagtail.images.blocks import ImageChooserBlock
 

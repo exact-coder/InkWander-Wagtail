@@ -13,7 +13,7 @@
     {% for post in blogpages %}
     {% with post=post.specific %}
         <div class="col-lg-3">
-            <div class="card" style="width: 18rem;">
+            <div class="card my-3" style="width: 18rem;">
                 {% with post.main_image as main_image %}
                     {% if main_image %}
                         {% image main_image fill-160x100 as blog_img %}
