@@ -12,7 +12,7 @@
 
   <!-- Jumbotron -->
   {% image page.image original as banner_img %}
-    <div class="p-5 text-center bg-image rounded-3" style="
+    <div class="p-5 mb-3 text-center bg-image rounded-3" style="
     background-image: url({{banner_img.url}});
     height: 100%; object-fit: cover;
     ">
@@ -21,7 +21,6 @@
                 <div class="text-danger">
                     <h1 class="mb-3">{{ page.title }}</h1>
                     <h4 class="mb-3">{{ page.hero_text }}</h4>
-                    <div class="mb-3">{{ page.body|richtext }}</div>
                     {% if page.hero_cta_link %}
                         <a data-mdb-ripple-init class="btn btn-outline-danger btn-lg mb-3" href="{% pageurl page.hero_cta_link %}" role="button">{% firstof page.hero_cta page.hero_cta_link.title %}</a>
                     {% endif %}
@@ -30,6 +29,53 @@
         </div>
     </div>
 <!-- Jumbotron -->
+
+
+
+<!-- Carousel Start -->
+
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide mt-3 mb-3">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+
+    {% for carousel in self.home_page_carousels.all %}
+
+        {% image carousel.carousel_image fill-900x400 as img %}
+
+      <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}" data-bs-interval="2000">
+        <img src="{{ img.url}}" class="d-block w-100" alt="{{ img.alt }}">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>{{ carousel.carousel_title }}</h2>
+          <p>{{ carousel.carousel_subtitle}}</p>
+          {% if carousel.carousel_cta_link %}
+            <a data-mdb-ripple-init class="btn btn-outline-danger btn-lg mb-3" href="{% pageurl carousel.carousel_cta_link %}" role="button">{% firstof carousel.carousel_cta carousel.carousel_cta_link %}</a>
+          {% elif carousel.carousel_cta_url %}
+            <a data-mdb-ripple-init class="btn btn-outline-danger btn-lg mb-3" href="{{ carousel.carousel_cta_url }}" role="button">{% firstof carousel.carousel_cta carousel.carousel_cta_url %}</a>
+          {% endif %}
+        </div>
+      </div>
+
+    {% endfor %}
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Carousel End -->
+
+  <div class="mb-3 bg-black">{{ page.body|richtext }}</div>
 
 {% endblock content %}
 
