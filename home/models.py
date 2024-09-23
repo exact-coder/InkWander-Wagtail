@@ -73,7 +73,7 @@ class HomePage(Page):
         ),
         MultiFieldPanel(
             [
-                InlinePanel("home_page_carousels",max_num=3,min_num=1,label="Carousel"),
+                InlinePanel("home_page_carousels",max_num=5,min_num=1,label="Carousel"),
             ],
             heading="Home Page Carousel section",
         ),
