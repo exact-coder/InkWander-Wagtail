@@ -107,3 +107,11 @@ class Author(models.Model):
 
     class Meta:
         verbose_name_plural = 'Authors'
+
+class Subscriber(models.Model):
+    email = models.CharField(max_length=100,blank=False,null=False,help_text="Email Address")
+    name = models.CharField(max_length=100,blank=False,null=False,help_text="Full Name")
+
+    def __str__(self):
+        return self.name
+    
