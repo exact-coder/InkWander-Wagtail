@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import render
 from django import forms
 
 # Add these:
@@ -13,6 +14,7 @@ from wagtail.admin.panels import FieldPanel,InlinePanel,MultiFieldPanel
 from wagtail.snippets.models import register_snippet
 
 from wagtail.search import index
+from wagtail.contrib.routable_page.models import RoutablePageMixin,route
 
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey(
@@ -33,7 +35,7 @@ class BlogTagIndexPage(Page):
         context['blogpages'] = blogpages
         return context
 
-class BlogIndexPage(Page):
+class BlogIndexPage(RoutablePageMixin,Page):
     intro = RichTextField(blank=True)
 
     def get_context(self, request):
@@ -46,6 +48,13 @@ class BlogIndexPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('intro')
     ]
+    @route(r'^latest/?$',name="latest_posts")
+    def latest_blog_posts(self,request, *args, **kwargs):
+        context = self.get_context(request, *args,**kwargs)
+        context["latest_posts"] = BlogPage.objects.live().public()[:2]
+
+        return render(request, "blog/latest_posts.html",context)
+
 
 class BlogPage(Page):
     date = models.DateField("Post date")
@@ -76,6 +85,9 @@ class BlogPage(Page):
         FieldPanel('body'),
         InlinePanel('gallery_images', label="Gallery images"),
     ]
+
+    
+
 
 class BlogPageGalleryImage(Orderable):
     page = ParentalKey(BlogPage, on_delete=models.CASCADE, related_name='gallery_images')

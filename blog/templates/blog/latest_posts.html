@@ -7,18 +7,17 @@
 {% block content %}
     <div class="row mt-3">
         <div class="col-lg-8">
-            <h1 class="text-danger text-center mt-3 mb-3 p-3">{{ page.title }}</h1><hr>
+            <h1 class="text-danger text-center mt-3 mb-3 p-3">This is a latest blog page</h1><hr>
         </div>
         <div class="col-lg-4">
-            <a class="btn btn-primary p-2" href="{% routablepageurl page 'latest_posts' %}">Latest Blogs</a>
+            <a class="btn btn-primary p-2" href="{{ page.get_parent.url }}">Return to blogs</a>
         </div>
     </div>
-
 
     <div class="intro m-3">{{ page.intro|richtext }}</div>
     
     <div class="row">
-    {% for post in blogpages %}
+    {% for post in latest_posts %}
     {% with post=post.specific %}
         <div class="col-lg-3">
             <div class="card my-3" style="width: 18rem;">
