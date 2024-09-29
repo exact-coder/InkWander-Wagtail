@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     "search",
     "wagtail_modeladmin",
     "wagtail.contrib.routable_page",
+    "wagtail.contrib.sitemaps",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
     "wagtail.contrib.settings",
 
     # Third party App

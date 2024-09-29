@@ -54,6 +54,16 @@ class BlogIndexPage(RoutablePageMixin,Page):
         context["latest_posts"] = BlogPage.objects.live().public()[:2]
 
         return render(request, "blog/latest_posts.html",context)
+    
+    def get_sitemap_urls(self, request=None):
+        sitemap =  super().get_sitemap_urls(request)
+        sitemap.append({
+            "location": self.full_url + self.reverse_subpage("latest_posts"),
+            "lastmod": (self.last_published_at or self.latest_revision_created_at or self.latest_blog_posts),
+            "priority": 0.9,
+        })
+
+        return sitemap
 
 
 class BlogPage(Page):
