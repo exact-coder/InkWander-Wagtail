@@ -149,7 +149,46 @@ ol {
 	padding: 0;
 	margin: 0;
 }
+.custom-btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+    color: #1c2541;
+    background: #e2eafc;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 15px;
+    letter-spacing: 2px;
+    margin-left: 20%;
+    transition: cubic-bezier(0.39, 0.58, 0.57, 1) all 0.55s;
+    box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+}
+.custom-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10%;
+    width: 100%;
+    height: 100%;
+	border-radius: 3px;
+    background-color: none;
+    transition: left 1s;
+    z-index: -1;
+  }
 
+  .custom-btn:hover::before {
+    left: 0;
+	background-color: #009688;
+	transition: cubic-bezier(0.39, 0.58, 0.57, 1) all 0.55s;
+  }
+
+  .custom-btn:hover {
+    color: white;
+	transition: cubic-bezier(0.39, 0.58, 0.57, 1) all 0.55s;
+
+  }
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -223,6 +262,22 @@ ol {
 	margin: .8rem;
 	padding: .3rem;
 }
+.card-custom .single-card {
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    border-radius: 20px;
+    z-index: 1;
+    transition: ease-in-out 0.3s;
+    box-shadow: 4px 4px 6px #bebebe, -4px -4px 6px #ffffff;
+}
+.card-img-top{
+	border-radius: 5%;
+	box-shadow: 6px 6px 8px #bebebe, -3px -3px 4px #ffffff;
+}
+
 
 /*----------------------------------------*/
 /* Blog Page css End

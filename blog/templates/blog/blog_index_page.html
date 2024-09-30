@@ -10,7 +10,7 @@
             <h1 class="text-danger text-center mt-3 mb-3 p-3">{{ page.title }}</h1><hr>
         </div>
         <div class="col-lg-4">
-            <a class="btn btn-primary p-2" href="{% routablepageurl page 'latest_posts' %}">Latest Blogs</a>
+            <a class="btn custom-btn p-2" href="{% routablepageurl page 'latest_posts' %}">Latest Blogs</a>
         </div>
     </div>
 
@@ -21,19 +21,21 @@
     {% for post in blogpages %}
     {% with post=post.specific %}
         <div class="col-lg-3">
-            <div class="card my-3" style="width: 18rem;">
-                {% with post.main_image as main_image %}
-                    {% if main_image %}
-                        {% image main_image fill-160x100 as blog_img %}
-                        <img src="{{ blog_img.url }}" class="card-img-top" alt="{{ post.title }}">
-                    {% endif %}
-                {% endwith %}
-                
-                <div class="card-body">
-                    <h5 class="card-title text-danger">{{ post.title }}</h5>
-                    <p class="card-text text-black">{{ post.intro }}</p>
-                    <a href="{% pageurl post %}" class="btn btn-primary align-items-center text-center"> See More </a>
-        
+            <div class="card-custom">
+                <div class="card single-card my-3" style="width: 18rem;">
+                    {% with post.main_image as main_image %}
+                        {% if main_image %}
+                            {% image main_image fill-160x100 as blog_img %}
+                            <img src="{{ blog_img.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">{{ post.title }}</h5>
+                        <p class="card-text text-black">{{ post.intro }}</p>
+                        <a href="{% pageurl post %}" class="btn custom-btn align-items-center text-center"> See More </a>
+            
+                    </div>
                 </div>
             </div>
         </div>
