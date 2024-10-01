@@ -23,23 +23,32 @@ body {
   background: #e7e7e7;
 }
 
+.navbar{
+	background: #e2eafc;
+	font-weight: 600 !important;
+	box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+}
+.footer-main{
+	background: #e2eafc;
+	box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001;
+}
+
 
 footer {
   /* border-top: 2px; */
   text-align: center;
 }
 
-/* .footer_icon{
-	align-items: justify;
-	text-align:center;
-} */
+.footer-bottom-text p{
+	color: #000;
+	font-weight: 600;
+}
 .footer_icon a{
 	padding:5px;
 	margin:3px; 
-	/* background-color:#f20607; */
-	/* border-radius:5px; */
-	/* text-decoration:none; */
-	color: #f20607;
+}
+.footer_icon a:hover{
+	color: #f20607 !important;
 }
 
 
@@ -72,6 +81,18 @@ footer {
   
   .page-form .helptext {
 	font-style: italic;
+  }
+
+  .home-rich-text{
+	background: transparent;
+	border-radius: 5px;
+	padding: 1rem;
+	color: #000;
+	box-shadow: 4px 4px 6px #bebebe, -4px -4px 6px #ffffff;
+  }
+  .home-rich-text p{
+	color: #000;
+	font-weight: 400;
   }
 
 

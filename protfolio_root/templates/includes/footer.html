@@ -1,7 +1,7 @@
 {# Load navigation_tags at the top of the file: #}
 {% load navigation_tags %}
 
-<footer class="bg-black" style="padding:2rem;margin-top: 2rem;">
+<footer class="footer-main" style="padding:2rem;margin-top: 2rem;">
 
     {% with twitter_url=settings.base.NavigationSettings.twitter_url github_url=settings.base.NavigationSettings.github_url facebook_url=settings.base.NavigationSettings.facebook_url linkedin_url=settings.base.NavigationSettings.linkedin_url mastodon_url=settings.base.NavigationSettings.mastodon_url %}
         {% if twitter_url or github_url or facebook_url or linkedin_url or mastodon_url %}
@@ -27,7 +27,7 @@
         {% endif %}
     {% endwith %}
 
-    <div class="text-center text-danger">
+    <div class="text-center footer-bottom-text">
         {# Add footer_text: #}
         {% get_footer_text %}
     </div>

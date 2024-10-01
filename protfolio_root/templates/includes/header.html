@@ -9,7 +9,7 @@
     {% get_site_root as site_root %}
 
     <!-- Navbar Start -->
-    <nav class="navbar bg-black border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
+    <nav class="navbar border-body navbar-expand-lg" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% pageurl site_root %}"><img src="{% static 'img/inkwander.png' %}" style="height: 50px;width:100px;" alt=""></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
               </li>
               {% for menuitem in site_root.get_children.live.in_menu %}
               <li class="nav-item">
-                    <a class="nav-link text-danger" href="{% pageurl menuitem %}">{{ menuitem.title }} </a> <!----{% if not forloop.last %} | {% endif %}--->
+                    <a class="nav-link text-danger font-weight-bold" href="{% pageurl menuitem %}">{{ menuitem.title }} </a> <!----{% if not forloop.last %} | {% endif %}--->
                 </li>
               {% endfor %}
               <!-- <li class="nav-item dropdown">
