@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import render
 from django import forms
+from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
 
 # Add these:
 from modelcluster.fields import ParentalKey,ParentalManyToManyField
@@ -42,7 +43,19 @@ class BlogIndexPage(RoutablePageMixin,Page):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         blogpages = self.get_children().live().order_by('-first_published_at')
-        context['blogpages'] = blogpages
+
+        paginator = Paginator(blogpages,2)
+
+        page = request.GET.get("page")
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+
+
+        context['blogpages'] = posts
         return context
 
     content_panels = Page.content_panels + [
