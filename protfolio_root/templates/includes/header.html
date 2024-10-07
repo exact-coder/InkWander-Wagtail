@@ -1,4 +1,4 @@
-{% load wagtailcore_tags navigation_tags wagtailuserbar static %}
+{% load wagtailcore_tags navigation_tags wagtailuserbar static  cache %}
 
 
 <header>
@@ -20,11 +20,13 @@
               <li class="nav-item">
                 <a class="nav-link text-danger active" aria-current="page" href="{% pageurl site_root %}">Home</a>
               </li>
-              {% for menuitem in site_root.get_children.live.in_menu %}
-              <li class="nav-item">
-                    <a class="nav-link text-danger font-weight-bold" href="{% pageurl menuitem %}">{{ menuitem.title }} </a> <!----{% if not forloop.last %} | {% endif %}--->
-                </li>
-              {% endfor %}
+              {% cache 604800 navigation %}
+                {% for menuitem in site_root.get_children.live.in_menu %}
+                <li class="nav-item">
+                      <a class="nav-link text-danger font-weight-bold" href="{% pageurl menuitem %}">{{ menuitem.title }} </a> <!----{% if not forloop.last %} | {% endif %}--->
+                  </li>
+                {% endfor %}
+              {% endcache %}
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown

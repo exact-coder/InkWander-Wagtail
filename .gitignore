@@ -9,6 +9,7 @@ static
 intot
 # Backup files # 
 *.bak 
+cache
 
 # If you are using PyCharm # 
 # User-specific stuff

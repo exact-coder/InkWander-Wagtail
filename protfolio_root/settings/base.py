@@ -186,3 +186,13 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 RECAPTCHA_PUBLIC_KEY="6LfloVoqAAAAAPqjGCMIwlBQuxdMpO1KuhH_RDQ_"
 RECAPTCHA_PRIVATE_KEY="6LfloVoqAAAAAMjesl3yogclnDOT-F7C2wwrUa5v"
 NOCAPTCHA=True
+
+
+# Caches Settings
+CACHES ={
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(PROJECT_DIR, "cache")
+    }
+}
+
