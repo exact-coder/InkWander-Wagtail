@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "wagtail.contrib.settings",
 
     # Third party App
+    "django_recaptcha",
+    "wagtailcaptcha",
 
 ]
 
@@ -180,3 +182,7 @@ WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'tx
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
+# Recaptcha Settings
+RECAPTCHA_PUBLIC_KEY="6LfloVoqAAAAAPqjGCMIwlBQuxdMpO1KuhH_RDQ_"
+RECAPTCHA_PRIVATE_KEY="6LfloVoqAAAAAMjesl3yogclnDOT-F7C2wwrUa5v"
+NOCAPTCHA=True
