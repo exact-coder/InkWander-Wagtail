@@ -2,12 +2,15 @@ from django.db import models
 from django.shortcuts import render
 from django import forms
 from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 # Add these:
 from modelcluster.fields import ParentalKey,ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
+from wagtail.api import APIField
 from wagtail.models import Page,Orderable
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel,InlinePanel,MultiFieldPanel
@@ -61,6 +64,11 @@ class BlogIndexPage(RoutablePageMixin,Page):
     content_panels = Page.content_panels + [
         FieldPanel('intro')
     ]
+
+    api_fields = [
+        APIField('intro'),
+    ]
+    
     @route(r'^latest/?$',name="latest_posts")
     def latest_blog_posts(self,request, *args, **kwargs):
         context = self.get_context(request, *args,**kwargs)
@@ -109,7 +117,16 @@ class BlogPage(Page):
         InlinePanel('gallery_images', label="Gallery images"),
     ]
 
-    
+    def save(self, *args,**kwargs):
+        key = make_template_fragment_key("blog_post_preview",[self.id])
+        cache.delete(key)
+        return super().save(*args, **kwargs)
+
+    api_fields = [
+        APIField('intro'),
+        APIField('body'),
+        APIField('authors'),
+    ]    
 
 
 class BlogPageGalleryImage(Orderable):
@@ -142,6 +159,15 @@ class Author(models.Model):
 
     class Meta:
         verbose_name_plural = 'Authors'
+
+    @property
+    def author_name(self):
+        return self.name
+
+    api_fields = [
+        APIField('name'),
+        APIField('author_name'),
+    ]
 
 class Subscriber(models.Model):
     email = models.CharField(max_length=100,blank=False,null=False,help_text="Email Address")
