@@ -40,6 +40,12 @@ class BlogTagIndexPage(Page):
         return context
 
 class BlogIndexPage(RoutablePageMixin,Page):
+
+    template="blog/blog_index_page.html"
+    subpage_types =['blog.BlogPage','blog.BlogTagIndexPage']
+    # max_count=1
+    parent_page_types = ['home.HomePage']
+
     intro = RichTextField(blank=True)
 
     def get_context(self, request):
@@ -88,6 +94,11 @@ class BlogIndexPage(RoutablePageMixin,Page):
 
 
 class BlogPage(Page):
+    template="blog/Blog_Page.html"
+    subpage_types = []
+    parent_page_types = ['blog.BlogIndexPage']
+
+
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)

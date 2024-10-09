@@ -28,6 +28,12 @@ class HomePageCarousels(Orderable):
 
 
 class HomePage(Page):
+
+    template = "home/home_page.html"
+    subpage_types = ['home.HomePage','blog.BlogIndexPage','portfolio.PortfolioPage','base.FormPage']
+    # max_count=1
+
+
     # add the Hero section of HomePage:
     image = models.ForeignKey(
         "wagtailimages.Image",
