@@ -15,6 +15,7 @@ INSTALLED_APPS = INSTALLED_APPS + [
 
     # Third party app
     "debug_toolbar",
+    'wagtail.contrib.styleguide',
 ]
 
 MIDDLEWARE = MIDDLEWARE + [
