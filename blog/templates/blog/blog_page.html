@@ -40,7 +40,7 @@
         <div class="tags">
             <h3>Tags</h3>
             {% for tag in tags %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                <a class="btn custom-btn" href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
             {% endfor %}
         </div>
     {% endif %}

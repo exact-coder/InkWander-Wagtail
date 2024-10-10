@@ -6,7 +6,7 @@ from modelcluster.fields import ParentalKey
 from wagtail.models import Orderable
 
 # import MultiFieldPanel:
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel,InlinePanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel,InlinePanel,ObjectList,TabbedInterface
 
 class HomePageCarousels(Orderable):
     page = ParentalKey("home.HomePage", related_name="home_page_carousels")
@@ -67,16 +67,6 @@ class HomePage(Page):
 
     # modify your content_panels:
     content_panels = Page.content_panels + [
-        
-        MultiFieldPanel(
-            [
-                FieldPanel("image"),
-                FieldPanel("hero_text"),
-                FieldPanel("hero_cta"),
-                FieldPanel("hero_cta_link"),
-            ],
-            heading="Hero section",
-        ),
         MultiFieldPanel(
             [
                 InlinePanel("home_page_carousels",max_num=5,min_num=1,label="Carousel"),
@@ -91,3 +81,24 @@ class HomePage(Page):
         ),
         
     ]
+    # promote_panels = []
+    # settings_panel = []
+
+    hero_panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel("image"),
+                FieldPanel("hero_text"),
+                FieldPanel("hero_cta"),
+                FieldPanel("hero_cta_link"),
+            ],
+            heading="Hero section",
+        ),
+    ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels,heading="Editable Content"),
+        ObjectList(Page.promote_panels,heading="Promotional Staff"),
+        ObjectList(Page.settings_panels,heading="Settings Staff"),
+        ObjectList(hero_panels,heading="Hero Settings"),
+    ])
