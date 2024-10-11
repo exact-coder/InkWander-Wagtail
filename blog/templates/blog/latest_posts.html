@@ -6,9 +6,16 @@
 
 {% block content %}
     <div class="row mt-3">
-        <div class="col-lg-8">
-            <h1 class="text-danger text-center mt-3 mb-3 p-3">This is a latest blog page</h1><hr>
-        </div>
+        {% if latest_posts %}
+            <div class="col-lg-8">
+                <h1 class="text-danger text-center mt-3 mb-3 p-3">This is a latest blog page</h1><hr>
+            </div>
+        {% endif %}
+        {% if category_name %}
+            <div class="col-lg-8">
+                <h1 class="text-danger text-center mt-3 mb-3 p-3">All "{{category_name}}" category blogs</h1><hr>
+            </div>
+        {% endif %}
         <div class="col-lg-4">
             <a class="btn btn-primary p-2" href="{{ page.get_parent.url }}">Return to blogs</a>
         </div>
@@ -17,29 +24,53 @@
     <div class="intro m-3">{{ page.intro|richtext }}</div>
     
     <div class="row">
-    {% for post in latest_posts %}
-    {% with post=post.specific %}
-        <div class="col-lg-3">
-            <div class="card my-3" style="width: 18rem;">
-                {% with post.main_image as main_image %}
-                    {% if main_image %}
-                        {% image main_image fill-160x100 as blog_img %}
-                        <img src="{{ blog_img.url }}" class="card-img-top" alt="{{ post.title }}">
-                    {% endif %}
-                {% endwith %}
-                
-                <div class="card-body">
-                    <h5 class="card-title text-danger">{{ post.title }}</h5>
-                    <p class="card-text text-black">{{ post.intro }}</p>
-                    <a href="{% pageurl post %}" class="btn btn-primary align-items-center text-center"> See More </a>
-        
+        {% if latest_posts %}
+        {% for post in latest_posts %}
+        {% with post=post.specific %}
+            <div class="col-lg-3 col-md-6">
+                <div class="card my-3" style="width: 18rem;">
+                    {% with post.main_image as main_image %}
+                        {% if main_image %}
+                            {% image main_image fill-160x100 as blog_img %}
+                            <img src="{{ blog_img.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">{{ post.title }}</h5>
+                        <p class="card-text text-black">{{ post.intro }}</p>
+                        <a href="{% pageurl post %}" class="btn btn-primary align-items-center text-center"> See More </a>
+            
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        
         {% endwith %}
         {% endfor %}
+        {% endif %}
+
+        {% if categories_posts %}
+        {% for post in categories_posts %}
+        {% with post=post.specific %}
+            <div class="col-lg-3 col-md-6">
+                <div class="card my-3" style="width: 18rem;">
+                    {% with post.main_image as main_image %}
+                        {% if main_image %}
+                            {% image main_image fill-160x100 as blog_img %}
+                            <img src="{{ blog_img.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">{{ post.title }}</h5>
+                        <p class="card-text text-black">{{ post.intro }}</p>
+                        <a href="{% pageurl post %}" class="btn btn-primary align-items-center text-center"> See More </a>
+            
+                    </div>
+                </div>
+            </div>
+        {% endwith %}
+        {% endfor %}
+        {% endif %}
     </div>
 
 {% endblock %}

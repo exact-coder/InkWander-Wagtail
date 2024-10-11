@@ -83,7 +83,7 @@ class BlogIndexPage(RoutablePageMixin,Page):
 
 
         context['blogpages'] = posts
-        context["categories"] = BlogCategory.objects.all()
+        context["categories"] =  BlogCategory.objects.all()
         return context
 
     content_panels = Page.content_panels + [
@@ -93,6 +93,19 @@ class BlogIndexPage(RoutablePageMixin,Page):
     api_fields = [
         APIField('intro'),
     ]
+
+    @route(r"^category/(?P<cat_slug>[-\w]*)/$", name="category_view")
+    def category_view(self,request, cat_slug):
+        context = self.get_context(request)
+        try:
+            category = BlogCategory.objects.get(slug=cat_slug)
+        except Exception:
+            category = None
+        if category is None:
+            pass
+        context["category_name"] = category.name
+        context["categories_posts"] = BlogPage.objects.filter(categories__in=[category])
+        return render(request, "blog/latest_posts.html",context)
     
     @route(r'^latest/?$',name="latest_posts")
     def latest_blog_posts(self,request, *args, **kwargs):
