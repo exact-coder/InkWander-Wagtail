@@ -8,6 +8,17 @@
     <div class="row mt-3">
         <div class="col-lg-8">
             <h1 class="text-danger text-center mt-3 mb-3 p-3">{{ page.title }}</h1><hr>
+            <h1>Categories: 
+                <small>
+                    {% for cat in categories %}
+                        <a href="#">
+                        <a href="#">
+                            {{ cat.name }}
+                        </a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </small>
+            </h1>
+            
         </div>
         <div class="col-lg-4">
             <a class="btn custom-btn p-2" href="{% routablepageurl page 'latest_posts' %}">Latest Blogs</a>

@@ -79,8 +79,9 @@ class HomePage(Page):
             ],
             heading="Body section"
         ),
-        
+
     ]
+
     # promote_panels = []
     # settings_panel = []
 
@@ -102,3 +103,4 @@ class HomePage(Page):
         ObjectList(Page.settings_panels,heading="Settings Staff"),
         ObjectList(hero_panels,heading="Hero Settings"),
     ])
+

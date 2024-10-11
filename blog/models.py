@@ -38,6 +38,24 @@ class BlogTagIndexPage(Page):
         context = super().get_context(request)
         context['blogpages'] = blogpages
         return context
+    
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=250)
+    slug = models.SlugField(verbose_name="slug", allow_unicode=True,max_length=255, help_text="A slug to identify posts by this category")
+
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("slug"),
+    ]
+
+    class Meta:
+        verbose_name = "Blog Category"
+        verbose_name_plural = "Blog Categories"
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name
+register_snippet(BlogCategory)
 
 class BlogIndexPage(RoutablePageMixin,Page):
 
@@ -65,6 +83,7 @@ class BlogIndexPage(RoutablePageMixin,Page):
 
 
         context['blogpages'] = posts
+        context["categories"] = BlogCategory.objects.all()
         return context
 
     content_panels = Page.content_panels + [
@@ -104,6 +123,7 @@ class BlogPage(Page):
     body = RichTextField(blank=True)
     authors = ParentalManyToManyField('blog.Author', blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
+    categories = ParentalManyToManyField("blog.BlogCategory", blank=True)
 
     def main_image(self):
         gallery_item = self.gallery_images.first()
@@ -123,6 +143,12 @@ class BlogPage(Page):
             FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
             FieldPanel('tags'),
         ], heading="Blog information"),
+        MultiFieldPanel(
+            [
+                FieldPanel("categories", widget=forms.CheckboxSelectMultiple)
+            ],
+            heading="Categories"
+        ),
         FieldPanel('intro'),
         FieldPanel('body'),
         InlinePanel('gallery_images', label="Gallery images"),
