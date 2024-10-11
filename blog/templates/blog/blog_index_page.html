@@ -57,7 +57,7 @@
 
         {% if blogpages.paginator.num_pages > 1 %}
             <nav aria-label="Page navigation example" >
-                <ul class="pagination mt-3 justify-content-center">
+                <ul class="pagination">
 
 
                 {% if blogpages.has_previous %}
@@ -84,6 +84,7 @@
             </nav>
         
         {% endif %}
-    </div>
+
+        
 
 {% endblock %}

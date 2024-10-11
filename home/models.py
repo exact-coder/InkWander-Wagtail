@@ -104,3 +104,6 @@ class HomePage(Page):
         ObjectList(hero_panels,heading="Hero Settings"),
     ])
 
+    def get_admin_display_title(self):
+        return "InkWander Home"
+

@@ -13,6 +13,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from .api import api_router
 
 urlpatterns = [
+    path('', include('allauth.urls')),
     path("django-admin/", admin.site.urls),
     path('api/v2/', api_router.urls),
     path("admin/", include(wagtailadmin_urls)),
