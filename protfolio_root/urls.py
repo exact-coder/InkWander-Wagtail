@@ -13,9 +13,9 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from .api import api_router
 
 urlpatterns = [
-    path('', include('allauth.urls')),
     path("django-admin/", admin.site.urls),
     path('api/v2/', api_router.urls),
+    path('', include('allauth.urls')),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),

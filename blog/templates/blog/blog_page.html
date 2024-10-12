@@ -10,7 +10,7 @@
 
     {% with authors=page.authors.all %}
         {% if authors %}
-            <h3>Posted by:</h3>
+            <h3>Written by:</h3>
             <ul>
                 {% for author in authors %}
                     <li style="display: inline">
@@ -44,6 +44,6 @@
             {% endfor %}
         </div>
     {% endif %}
-{% endwith %}
+    {% endwith %}
 
 {% endblock %}
